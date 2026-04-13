@@ -40,9 +40,10 @@ body {
     transition: 0.3s;
 }
 
+/* BOTÃO DO TEMA */
 .topo-global {
     position: fixed;
-    top: 15px;
+    top: 16px;
     right: 20px;
     z-index: 9999;
 }
@@ -53,11 +54,9 @@ body {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: linear-gradient(135deg, #ffb7c9, #f48fb1);
     box-shadow: 0 4px 12px rgba(244, 143, 177, 0.35);
     transition: all 0.2s ease;
@@ -81,11 +80,12 @@ body {
 body.dark-mode .btn-tema {
     background: linear-gradient(135deg, #5a3a4a, #6b4456);
     border: 1px solid #c97c98;
-    box-shadow: 
-        0 4px 10px rgba(0,0,0,0.4),
-        inset 0 2px 4px rgba(255,255,255,0.1);
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
 }
 
+/* CARD */
 .container {
     width: 90%;
     max-width: 480px;
@@ -113,6 +113,21 @@ input[type="text"] {
     background-color: var(--input-bg);
     color: var(--text);
     margin-bottom: 24px;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid var(--button);
+    box-shadow: 0 0 0 2px rgba(255, 159, 189, 0.3);
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+    -webkit-text-fill-color: var(--text) !important;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
 }
 
 .menu-tipo {
@@ -156,7 +171,7 @@ input[type="text"] {
     background: var(--result-bg);
     border: 1px solid var(--result-border);
     border-radius: 18px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .erro {
@@ -206,43 +221,24 @@ input[type="text"] {
     height: 22px;
     background: #f48ca7;
     border-radius: 50%;
-    box-shadow: inset 0 2px 4px rgba(255,255,255,0.5);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
-input:focus {
-    outline: none;
-    border: 1px solid var(--button);
-    box-shadow: 0 0 0 2px rgba(255, 159, 189, 0.3);
-}
-
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
-    -webkit-text-fill-color: var(--text) !important;
-}
-
-input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
-}
-
-/* ================= MOBILE ================= */
+/* MOBILE */
 @media (max-width: 600px) {
-
     body {
         align-items: flex-start;
-        padding: 20px 0;
+        padding: 110px 0 20px;
     }
 
-    /* BOTÃO DO TEMA (CORRIGIDO) */
     .topo-global {
-        position: fixed;
-        top: 70px;   /* antes tava baixo demais */
+        top: 62px;
         right: 12px;
-        z-index: 9999;
     }
 
     .btn-tema {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
     }
 
     .btn-tema svg {
@@ -250,7 +246,6 @@ input:-webkit-autofill:focus {
         height: 18px;
     }
 
-    /* CONTAINER */
     .container {
         width: 94%;
         padding: 18px;
@@ -282,7 +277,6 @@ input:-webkit-autofill:focus {
         font-size: 15px;
     }
 
-    /* LAÇO */
     .laco {
         width: 70px;
         height: 40px;
