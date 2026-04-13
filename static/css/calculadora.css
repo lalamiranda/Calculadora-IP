@@ -44,6 +44,7 @@ body {
     position: fixed;
     top: 15px;
     right: 20px;
+    z-index: 9999;
 }
 
 .btn-tema {
@@ -214,8 +215,26 @@ input:focus {
     box-shadow: 0 0 0 2px rgba(255, 159, 189, 0.3);
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+    -webkit-text-fill-color: var(--text) !important;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+}
+
 /* ================= MOBILE ================= */
 @media (max-width: 600px) {
+    .topo-global {
+        top: 85px;
+        right: 14px;
+    }
+
+    .btn-tema {
+        width: 42px;
+        height: 42px;
+    }
 
     body {
         align-items: flex-start;
