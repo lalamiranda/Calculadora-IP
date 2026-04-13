@@ -3,11 +3,11 @@
     --card: #fff6f9;
     --title: #ff8fb1;
     --text: #7a4f5f;
-    --input-bg: #ffeef3;
+    --input-bg: #fff7fa;
     --input-border: #f6b8c8;
     --menu-bg: #fff7fa;
-    --button: #ff9fbd;
-    --button-hover: #ff85a8;
+    --button: #e8a0b8;
+    --button-hover: #de8eaa;
     --button-text: #ffffff;
     --result-bg: #fff7fa;
     --result-border: #f6c7d4;
@@ -28,29 +28,37 @@ body.dark-mode {
     --result-border: #c97c98;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
     font-family: Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     transition: 0.3s;
+}
+
+body {
+    min-height: 100vh;
 }
 
 /* BOTÃO DO TEMA */
 .topo-global {
     position: fixed;
-    top: 16px;
-    right: 20px;
+    top: 14px;
+    right: 14px;
     z-index: 9999;
 }
 
 .btn-tema {
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -63,7 +71,7 @@ body {
 }
 
 .btn-tema:hover {
-    transform: scale(1.08);
+    transform: scale(1.06);
     box-shadow: 0 6px 16px rgba(244, 143, 177, 0.45);
 }
 
@@ -87,10 +95,11 @@ body.dark-mode .btn-tema {
 
 /* CARD */
 .container {
-    width: 90%;
+    width: 92%;
     max-width: 480px;
+    margin: 90px auto 24px;
     background: var(--card);
-    padding: 30px;
+    padding: 28px 24px 24px;
     border-radius: 24px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
     position: relative;
@@ -99,20 +108,21 @@ body.dark-mode .btn-tema {
 h2 {
     text-align: center;
     color: var(--title);
-    margin-bottom: 30px;
+    margin: 18px 0 24px;
     font-weight: 700;
+    font-size: 34px;
 }
 
+/* INPUT */
 input[type="text"] {
     width: 100%;
     padding: 16px;
     border: 1px solid var(--input-border);
     border-radius: 18px;
     font-size: 16px;
-    box-sizing: border-box;
     background-color: var(--input-bg);
     color: var(--text);
-    margin-bottom: 24px;
+    margin-bottom: 22px;
 }
 
 input:focus {
@@ -130,21 +140,35 @@ input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
 }
 
+/* OPÇÕES */
 .menu-tipo {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin: 20px 0;
+    margin: 18px 0 20px;
     padding: 18px;
     background: var(--menu-bg);
     border-radius: 18px;
     border: 1px solid var(--input-border);
 }
 
-.menu-tipo input[type="radio"] {
-    accent-color: var(--button);
+.menu-tipo label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--text);
 }
 
+.menu-tipo input[type="radio"] {
+    accent-color: var(--button);
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+
+/* BOTÕES */
 .btn-calcular,
 .btn-voltar {
     width: 100%;
@@ -165,6 +189,7 @@ input:-webkit-autofill:focus {
     transform: translateY(-2px);
 }
 
+/* RESULTADO */
 .resultado {
     margin-top: 24px;
     padding: 20px;
@@ -225,23 +250,19 @@ input:-webkit-autofill:focus {
 }
 
 /* MOBILE */
-@media (max-width: 600px) {
-
+@media (max-width: 768px) {
     body {
-        align-items: flex-start;
-        padding: 20px 0;
+        min-height: 100dvh;
     }
 
     .topo-global {
-        position: fixed;
-        top: 70px;
-        right: 12px;
-        z-index: 9999;
+        top: 10px;
+        right: 10px;
     }
 
     .btn-tema {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
     }
 
     .btn-tema svg {
@@ -251,47 +272,64 @@ input:-webkit-autofill:focus {
 
     .container {
         width: 100%;
-        height: 100dvh;
-        padding: 12px;
-        box-sizing: border-box;
+        min-height: 100dvh;
+        margin: 0;
+        padding: 84px 18px 20px;
         border-radius: 0;
-        /* remove bordas arredondadas */
+        box-shadow: none;
     }
 
     h2 {
-        font-size: 20px;
-        margin-bottom: 20px;
+        font-size: 24px;
+        margin: 8px 0 18px;
     }
 
     input[type="text"] {
-        padding: 14px;
-        font-size: 15px;
-        margin-bottom: 18px;
+        height: 54px;
+        padding: 14px 16px;
+        font-size: 16px;
+        margin-bottom: 16px;
+        border-radius: 18px;
     }
 
     .menu-tipo {
-        padding: 14px;
+        gap: 10px;
+        padding: 16px 14px;
+        margin: 14px 0 18px;
+        border-radius: 18px;
     }
 
-    .resultado {
-        padding: 16px;
+    .menu-tipo label {
+        font-size: 15px;
+    }
+
+    .menu-tipo input[type="radio"] {
+        width: 18px;
+        height: 18px;
     }
 
     .btn-calcular,
     .btn-voltar {
+        height: 54px;
         padding: 12px;
-        font-size: 15px;
+        font-size: 16px;
+        border-radius: 18px;
+    }
+
+    .resultado {
+        padding: 16px;
+        border-radius: 16px;
     }
 
     .laco {
-        width: 70px;
+        width: 72px;
         height: 40px;
-        top: -16px;
+        top: 8px;
     }
 
     .laco::before,
     .laco span {
-        width: 35px;
+        width: 36px;
         height: 40px;
     }
 
