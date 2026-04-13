@@ -226,14 +226,18 @@ input:-webkit-autofill:focus {
 
 /* MOBILE */
 @media (max-width: 600px) {
+
     body {
         align-items: flex-start;
-        padding: 110px 0 20px;
+        padding: 20px 0;
     }
 
+    /* BOTÃO FIXO NO TOPO (CORRETO) */
     .topo-global {
-        top: 62px;
+        position: fixed;
+        top: 70px;   /* altura perfeita abaixo da barra */
         right: 12px;
+        z-index: 9999;
     }
 
     .btn-tema {
@@ -246,7 +250,9 @@ input:-webkit-autofill:focus {
         height: 18px;
     }
 
+    /* AGORA O SEGREDO 👇 */
     .container {
+        margin-top: 40px; /* empurra só o card, não o body inteiro */
         width: 94%;
         padding: 18px;
         border-radius: 18px;
