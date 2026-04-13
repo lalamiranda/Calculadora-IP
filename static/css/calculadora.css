@@ -232,10 +232,9 @@ input:-webkit-autofill:focus {
         padding: 20px 0;
     }
 
-    /* BOTÃO FIXO NO TOPO (CORRETO) */
     .topo-global {
         position: fixed;
-        top: 70px;   /* altura perfeita abaixo da barra */
+        top: 70px;
         right: 12px;
         z-index: 9999;
     }
@@ -250,10 +249,13 @@ input:-webkit-autofill:focus {
         height: 18px;
     }
 
-    /* AGORA O SEGREDO 👇 */
     .container {
-        margin-top: 40px; /* empurra só o card, não o body inteiro */
-        width: 94%;
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 900px;
         padding: 18px;
         border-radius: 18px;
     }
