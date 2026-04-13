@@ -226,21 +226,31 @@ input:-webkit-autofill:focus {
 
 /* ================= MOBILE ================= */
 @media (max-width: 600px) {
-    .topo-global {
-        top: 85px;
-        right: 14px;
-    }
-
-    .btn-tema {
-        width: 42px;
-        height: 42px;
-    }
 
     body {
         align-items: flex-start;
         padding: 20px 0;
     }
 
+    /* BOTÃO DO TEMA (CORRIGIDO) */
+    .topo-global {
+        position: fixed;
+        top: 70px;   /* antes tava baixo demais */
+        right: 12px;
+        z-index: 9999;
+    }
+
+    .btn-tema {
+        width: 38px;
+        height: 38px;
+    }
+
+    .btn-tema svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* CONTAINER */
     .container {
         width: 94%;
         padding: 18px;
@@ -272,6 +282,7 @@ input:-webkit-autofill:focus {
         font-size: 15px;
     }
 
+    /* LAÇO */
     .laco {
         width: 70px;
         height: 40px;
@@ -287,10 +298,5 @@ input:-webkit-autofill:focus {
     .laco::after {
         width: 18px;
         height: 18px;
-    }
-
-    .btn-tema {
-        width: 42px;
-        height: 42px;
     }
 }
