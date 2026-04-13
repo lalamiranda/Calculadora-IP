@@ -1,3 +1,7 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
 def inteiro_para_ip(valor):
     oct1 = valor // (256**3)
     resto = valor % (256**3)
@@ -11,65 +15,71 @@ def inteiro_para_ip(valor):
     return f"{oct1}.{oct2}.{oct3}.{oct4}"
 
 
-try:
-    ip_cidr = input("Digite o IP/CIDR: ")
+@app.route("/")
+def index():
+    return render_template("calculadora.html")
 
-    ip, cidr = ip_cidr.split("/")
-    cidr = int(cidr)
 
-    if cidr < 0 or cidr > 32:
-        raise ValueError
+@app.route("/calcular", methods=["POST"])
+def calcular():
+    try:
+        ip_cidr = request.form["ip_cidr"]
 
-    mascara = (2**cidr - 1) << (32 - cidr)
-    print("Máscara em inteiro:", mascara)
-    print("Máscara em IP:", inteiro_para_ip(mascara))
+        ip, cidr = ip_cidr.split("/")
+        cidr = int(cidr)
 
-    partes = ip.split(".")
-
-    if len(partes) != 4:
-        raise ValueError
-
-    octetos = [int(p) for p in partes]
-
-    for o in octetos:
-        if o < 0 or o > 255:
+        if cidr < 0 or cidr > 32:
             raise ValueError
 
-    print("IP válido:", octetos)
+        mascara = (2**cidr - 1) << (32 - cidr)
 
-    ip_inteiro = (
-        octetos[0] * 256**3 +
-        octetos[1] * 256**2 +
-        octetos[2] * 256 +
-        octetos[3]
-    )
-    print("IP em inteiro:", ip_inteiro)
+        partes = ip.split(".")
+        if len(partes) != 4:
+            raise ValueError
 
-    rede = ip_inteiro & mascara
-    print("Endereço de rede:", inteiro_para_ip(rede))
+        octetos = [int(p) for p in partes]
 
-    bits_host = 32 - cidr
-    broadcast = rede + (2**bits_host - 1)
-    print("Broadcast:", inteiro_para_ip(broadcast))
+        for o in octetos:
+            if o < 0 or o > 255:
+                raise ValueError
 
-    if cidr == 32:
-        print("Primeiro host:", inteiro_para_ip(rede))
-        print("Último host:", inteiro_para_ip(rede))
-        print("Hosts:", 1)
+        ip_inteiro = (
+            octetos[0] * 256**3 +
+            octetos[1] * 256**2 +
+            octetos[2] * 256 +
+            octetos[3]
+        )
 
-    elif cidr == 31:
-        print("Primeiro host:", inteiro_para_ip(rede))
-        print("Último host:", inteiro_para_ip(broadcast))
-        print("Hosts:", 2)
+        rede = ip_inteiro & mascara
+        bits_host = 32 - cidr
+        broadcast = rede + (2**bits_host - 1)
 
-    else:
-        primeiro_host = rede + 1
-        ultimo_host = broadcast - 1
-        hosts = 2**bits_host - 2
+        if cidr == 32:
+            primeiro_host = rede
+            ultimo_host = rede
+            hosts = 1
+        elif cidr == 31:
+            primeiro_host = rede
+            ultimo_host = broadcast
+            hosts = 2
+        else:
+            primeiro_host = rede + 1
+            ultimo_host = broadcast - 1
+            hosts = 2**bits_host - 2
 
-        print("Primeiro host:", inteiro_para_ip(primeiro_host))
-        print("Último host:", inteiro_para_ip(ultimo_host))
-        print("Hosts:", hosts)
+        return render_template("calculadora.html",
+            resultado=True,
+            mascara=inteiro_para_ip(mascara),
+            rede=inteiro_para_ip(rede),
+            broadcast=inteiro_para_ip(broadcast),
+            primeiro=inteiro_para_ip(primeiro_host),
+            ultimo=inteiro_para_ip(ultimo_host),
+            hosts=hosts
+        )
 
-except ValueError:
-    print("Entrada inválida")
+    except ValueError:
+        return render_template("calculadora.html", erro=True)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

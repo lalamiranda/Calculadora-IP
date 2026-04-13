@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calculadora.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Calculadora de IP</h2>
+
+        <form action="/calcular" method="post">
+            <input type="text" name="ip_cidr" placeholder="Ex: 192.168.1.10/24" required>
+            <button type="submit">Calcular</button>
+        </form>
+
+        {% if resultado %}
+        <div class="resultado">
+            <h3>Resultado</h3>
+            <p><strong>Máscara:</strong> {{ mascara }}</p>
+            <p><strong>Rede:</strong> {{ rede }}</p>
+            <p><strong>Broadcast:</strong> {{ broadcast }}</p>
+            <p><strong>Primeiro Host:</strong> {{ primeiro }}</p>
+            <p><strong>Último Host:</strong> {{ ultimo }}</p>
+            <p><strong>Hosts:</strong> {{ hosts }}</p>
+        </div>
+        {% endif %}
+
+        {% if erro %}
+        <div class="erro">
+            Entrada inválida
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
