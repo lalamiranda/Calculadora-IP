@@ -1,30 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de IP</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/calculadora.css') }}">
 </head>
+
 <body>
+
+    <div class="topo-global">
+        <button type="button" class="btn-tema" onclick="toggleDarkMode()" id="btnTema">
+            <span id="iconeTema">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"></path>
+                </svg>
+            </span>
+        </button>
+    </div>
 
     <div class="container">
         <h2>Calculadora de IP</h2>
 
         <form action="/calcular" method="post">
-            <input type="text" name="ip_cidr" placeholder="Ex: 192.168.1.10/24" required>
-            <button type="submit">Calcular</button>
+            <input
+                type="text"
+                name="ip_cidr"
+                placeholder="Digite o número IP"
+                value="{{ request.form.get('ip_cidr', '') }}"
+                required
+            >
+
+            {% if not resultado %}
+            <div class="menu-tipo">
+                <label><input type="radio" name="tipo" value="completo" checked> Completo</label>
+                <label><input type="radio" name="tipo" value="mascara"> Máscara</label>
+                <label><input type="radio" name="tipo" value="rede"> Rede</label>
+                <label><input type="radio" name="tipo" value="broadcast"> Broadcast</label>
+                <label><input type="radio" name="tipo" value="hosts"> Hosts</label>
+            </div>
+            {% endif %}
+
+            {% if not resultado %}
+                <button type="submit" class="btn-calcular">Calcular</button>
+            {% else %}
+                <button type="button" class="btn-calcular" onclick="window.location.href='/'">
+                    Novo cálculo
+                </button>
+            {% endif %}
         </form>
 
         {% if resultado %}
         <div class="resultado">
             <h3>Resultado</h3>
-            <p><strong>Máscara:</strong> {{ mascara }}</p>
-            <p><strong>Rede:</strong> {{ rede }}</p>
-            <p><strong>Broadcast:</strong> {{ broadcast }}</p>
-            <p><strong>Primeiro Host:</strong> {{ primeiro }}</p>
-            <p><strong>Último Host:</strong> {{ ultimo }}</p>
-            <p><strong>Hosts:</strong> {{ hosts }}</p>
+
+            {% if tipo == "completo" %}
+                <p><strong>Máscara:</strong> {{ mascara }}</p>
+                <p><strong>Rede:</strong> {{ rede }}</p>
+                <p><strong>Broadcast:</strong> {{ broadcast }}</p>
+                <p><strong>Primeiro Host:</strong> {{ primeiro }}</p>
+                <p><strong>Último Host:</strong> {{ ultimo }}</p>
+                <p><strong>Hosts:</strong> {{ hosts }}</p>
+            {% elif tipo == "mascara" %}
+                <p><strong>Máscara:</strong> {{ mascara }}</p>
+            {% elif tipo == "rede" %}
+                <p><strong>Rede:</strong> {{ rede }}</p>
+            {% elif tipo == "broadcast" %}
+                <p><strong>Broadcast:</strong> {{ broadcast }}</p>
+            {% elif tipo == "hosts" %}
+                <p><strong>Hosts:</strong> {{ hosts }}</p>
+            {% endif %}
         </div>
         {% endif %}
 
@@ -33,7 +80,13 @@
             Entrada inválida
         </div>
         {% endif %}
+
+        <button type="button" class="btn-voltar" onclick="voltarPagina()">
+            Voltar
+        </button>
     </div>
 
+    <script src="{{ url_for('static', filename='js/dark-mode.js') }}"></script>
 </body>
+
 </html>

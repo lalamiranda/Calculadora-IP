@@ -24,6 +24,7 @@ def index():
 def calcular():
     try:
         ip_cidr = request.form["ip_cidr"]
+        tipo = request.form["tipo"]
 
         ip, cidr = ip_cidr.split("/")
         cidr = int(cidr)
@@ -67,18 +68,22 @@ def calcular():
             ultimo_host = broadcast - 1
             hosts = 2**bits_host - 2
 
-        return render_template("calculadora.html",
-            resultado=True,
-            mascara=inteiro_para_ip(mascara),
-            rede=inteiro_para_ip(rede),
-            broadcast=inteiro_para_ip(broadcast),
-            primeiro=inteiro_para_ip(primeiro_host),
-            ultimo=inteiro_para_ip(ultimo_host),
-            hosts=hosts
-        )
+        dados = {
+            "resultado": True,
+            "tipo": tipo,
+            "ip_cidr": ip_cidr,
+            "mascara": inteiro_para_ip(mascara),
+            "rede": inteiro_para_ip(rede),
+            "broadcast": inteiro_para_ip(broadcast),
+            "primeiro": inteiro_para_ip(primeiro_host),
+            "ultimo": inteiro_para_ip(ultimo_host),
+            "hosts": hosts
+        }
+
+        return render_template("calculadora.html", **dados)
 
     except ValueError:
-        return render_template("calculadora.html", erro=True)
+        return render_template("calculadora.html", erro=True, resultado=False)
 
 
 if __name__ == "__main__":
