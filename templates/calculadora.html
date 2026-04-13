@@ -22,6 +22,10 @@
     </div>
 
     <div class="container">
+        <div class="laco">
+            <span></span>
+        </div>
+
         <h2>Calculadora de IP</h2>
 
         <form action="/calcular" method="post">
@@ -36,6 +40,9 @@
             {% if not resultado %}
             <div class="menu-tipo">
                 <label><input type="radio" name="tipo" value="completo" checked> Completo</label>
+                <label><input type="radio" name="tipo" value="tipo_ip"> Tipo</label>
+                <label><input type="radio" name="tipo" value="classe"> Classe</label>
+                <label><input type="radio" name="tipo" value="uso"> Público/Privado</label>
                 <label><input type="radio" name="tipo" value="mascara"> Máscara</label>
                 <label><input type="radio" name="tipo" value="rede"> Rede</label>
                 <label><input type="radio" name="tipo" value="broadcast"> Broadcast</label>
@@ -57,18 +64,34 @@
             <h3>Resultado</h3>
 
             {% if tipo == "completo" %}
+                <p><strong>Tipo:</strong> {{ tipo_ip }}</p>
+                <p><strong>Classe:</strong> {{ classe }}</p>
+                <p><strong>Uso:</strong> {{ publico_privado }}</p>
                 <p><strong>Máscara:</strong> {{ mascara }}</p>
                 <p><strong>Rede:</strong> {{ rede }}</p>
                 <p><strong>Broadcast:</strong> {{ broadcast }}</p>
                 <p><strong>Primeiro Host:</strong> {{ primeiro }}</p>
                 <p><strong>Último Host:</strong> {{ ultimo }}</p>
                 <p><strong>Hosts:</strong> {{ hosts }}</p>
+
+            {% elif tipo == "tipo_ip" %}
+                <p><strong>Tipo:</strong> {{ tipo_ip }}</p>
+
+            {% elif tipo == "classe" %}
+                <p><strong>Classe:</strong> {{ classe }}</p>
+
+            {% elif tipo == "uso" %}
+                <p><strong>Uso:</strong> {{ publico_privado }}</p>
+
             {% elif tipo == "mascara" %}
                 <p><strong>Máscara:</strong> {{ mascara }}</p>
+
             {% elif tipo == "rede" %}
                 <p><strong>Rede:</strong> {{ rede }}</p>
+
             {% elif tipo == "broadcast" %}
                 <p><strong>Broadcast:</strong> {{ broadcast }}</p>
+
             {% elif tipo == "hosts" %}
                 <p><strong>Hosts:</strong> {{ hosts }}</p>
             {% endif %}
