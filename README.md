@@ -72,4 +72,4 @@ Este projeto foi desenvolvido com fins acadêmicos para reforçar conhecimentos 
 ## 👩‍💻 Autora
 
 Desenvolvido por **Lavinia Maria Barbosa de Miranda**
-🎓 Estudante de Análise e Desenvolvimento de Sistemas
+* 🎓 Estudante de Análise e Desenvolvimento de Sistemas
