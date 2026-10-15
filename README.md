@@ -1,75 +1,28 @@
-# 🧮 Calculadora IP
+# Calculadora IP
 
-Projeto web desenvolvido com **Python, HTML e CSS** para cálculo e análise de endereços IP, auxiliando no estudo de redes de computadores.
+Aplicação web desenvolvida em Python e Flask para realizar cálculos de endereçamento IPv4 e auxiliar no estudo de redes de computadores.
 
----
+## Funcionalidades
 
-## 🚀 Sobre o Projeto
+- Cálculo de máscara de sub-rede e endereço de rede.
+- Identificação de broadcast e faixa de hosts.
+- Classificação de endereços IPv4.
+- Interface web para inserir os dados e visualizar resultados.
 
-A **Calculadora IP** foi criada com o objetivo de facilitar o aprendizado de conceitos de redes, como sub-redes, máscaras de rede e identificação de endereço de rede, broadcast e faixa de hosts.
+## Tecnologias utilizadas
 
-O sistema possui uma interface web simples e intuitiva, facilitando a interação do usuário com os cálculos.
+Python, Flask, HTML e CSS.
 
----
+## Como executar
 
-## ✨ Funcionalidades
+1. Instale as dependências com `pip install -r requirements.txt`.
+2. Execute `python calculadora.py`.
+3. Acesse `http://localhost:5000`.
 
-* 🔢 Cálculo de endereço de rede
-* 🌐 Cálculo de broadcast
-* 📊 Identificação de faixa de hosts
-* 🧠 Cálculo de máscara de sub-rede
-* 💻 Interface web com HTML e CSS
+## Demonstração
 
----
+Adicionar uma captura de tela da aplicação funcionando.
 
-## 🛠️ Tecnologias Utilizadas
+## Autoria
 
-* **Python 3**
-* **HTML5**
-* **CSS3**
-
----
-
-## ▶️ Como Executar
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/lalamiranda/calculadora-ip.git
-```
-
-2. Acesse a pasta:
-
-```bash
-cd calculadora-ip
-```
-
-3. Execute o projeto:
-
-```bash
-python app.py
-```
-
-4. Abra no navegador:
-
-```
-http://localhost:5000
-```
-
----
-
-## 🎯 Objetivo
-
-Este projeto foi desenvolvido com fins acadêmicos para reforçar conhecimentos em:
-
-* Redes de Computadores
-* Endereçamento IP
-* Desenvolvimento Web
-* Lógica de Programação com Python
-
----
-
-## 👩‍💻 Autora
-
-Desenvolvido por **Lavinia Maria Barbosa de Miranda**
-* 🎓 Estudante de Análise e Desenvolvimento de Sistemas
+Lavínia Maria Barbosa de Miranda.
