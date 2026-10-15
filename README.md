@@ -21,8 +21,8 @@ Python, Flask, HTML e CSS.
 
 ## Demonstração
 
+<img width="1917" height="911" alt="image" src="https://github.com/user-attachments/assets/ee08a761-21d1-4dd1-9c92-0443270e9655" />
 <img width="1892" height="902" alt="image" src="https://github.com/user-attachments/assets/ebc88d5a-5950-4fab-9d57-4d8d0a787b67" />
-<img width="1901" height="901" alt="image" src="https://github.com/user-attachments/assets/2404e7da-9a82-4090-8004-aec630360f86" />
 
 
 
