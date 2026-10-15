@@ -21,7 +21,8 @@ Python, Flask, HTML e CSS.
 
 ## Demonstração
 
-Adicionar uma captura de tela da aplicação funcionando.
+<img width="1892" height="902" alt="image" src="https://github.com/user-attachments/assets/ebc88d5a-5950-4fab-9d57-4d8d0a787b67" />
+
 
 ## Autoria
 
